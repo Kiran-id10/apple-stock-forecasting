@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+streamlit
+pandas
+numpy
+matplotlib
+joblib
+statsmodels
+deep learning 
+time series forecasting
