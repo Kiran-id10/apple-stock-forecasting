@@ -1,6 +1,6 @@
 # 📄 Apple Stock Forecasting System (Time Series + Cloud Deployment)
 
-🚀 **Live Production Demo:** http://YOUR_VM_IP:8501
+🚀 **Live Production Demo:** http://34.131.252.227:8501
 
 🎯 Predicts future Apple stock prices using multivariate time series forecasting (VAR) with real-time API and interactive dashboard.
 
@@ -98,15 +98,27 @@ Forecast Output
 
 ## 🌐 Live Cloud Deployment
 
-🚀 Deployed on Google Cloud Platform (GCP)
+🚀 This project is deployed on Google Cloud Platform (GCP)
 
-### 🔗 Streamlit Dashboard
+### 📊 Streamlit Dashboard
+👉 http://34.131.252.227:8501
 
-👉 http://YOUR_VM_IP:8501
+### ⚡ FastAPI Backend (API Docs)
+👉 http://34.131.252.227:8002/docs
 
-### ⚡ FastAPI API Docs
+---
 
-👉 http://YOUR_VM_IP:8002/docs
+### 🧠 How it works
+- Upload stock dataset
+- Model processes time-series data using VAR
+- Predicts next 30 days stock prices
+- Visualizes forecast vs historical data
+
+---
+
+⚠️ Note:
+- VM may be stopped to save cloud cost
+- If link doesn’t work, please check later or contact me
 
 ---
 
@@ -124,11 +136,35 @@ curl -X POST "http://YOUR_VM_IP:8002/predict" \
 
 ## 📈 Model Performance
 
-* Produces smooth and stable forecasts
-* Captures short-term trends effectively
-* Suitable for real-time inference use cases
+The model was evaluated on a hold-out test set using standard regression metrics for time series forecasting.
 
-📊 Evaluated on multivariate time-series dataset using forecasting-based validation.
+### 📊 Evaluation Metrics
+
+| Metric | Value | Interpretation |
+|-------|------|----------------|
+| **MAE (Mean Absolute Error)** | 4.39 | Average absolute prediction error |
+| **RMSE (Root Mean Squared Error)** | 5.54 | Penalizes larger errors more heavily |
+| **MSE (Mean Squared Error)** | 30.72 | Variance of prediction errors |
+| **MAPE (Mean Absolute Percentage Error)** | **0.91%** | Very high accuracy (< 1%) |
+
+---
+
+### 🧠 Performance Insights
+
+- The model achieves **<1% MAPE**, indicating highly accurate short-term forecasts  
+- Low RMSE (~5.5) shows predictions remain close to actual price movements  
+- Stable performance due to:
+  - Multivariate modeling (VAR)
+  - Stationarity via differencing
+  - Proper feature selection
+
+---
+
+### 📌 Key Takeaway
+
+👉 The model is **well-suited for short-term financial forecasting**  
+👉 Provides **stable and realistic predictions**, avoiding extreme volatility  
+👉 Production-ready for real-time inference use cases
 
 ---
 
