@@ -1,40 +1,81 @@
-# 📄 Apple Stock Forecasting System (Time Series + Cloud Deployment)
+# 📈 Apple Stock Forecasting System (VAR | FastAPI | Streamlit | GCP Deployment)
 
-🚀 **Live Production Demo:** http://34.131.252.227:8501
+🚀 Production-ready ML system with real-time forecasting and <1% error deployed on cloud.
 
-🎯 Predicts future Apple stock prices using multivariate time series forecasting (VAR) with real-time API and interactive dashboard.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![GCP](https://img.shields.io/badge/Cloud-GCP-orange)
+
+---
+
+🚀 **Live App:** http://34.131.252.227:8501
+⚡ **API Docs:** http://34.131.252.227:8002/docs
+
+🔥 Achieved **<1% forecasting error (MAPE)** using multivariate time series (VAR) deployed on cloud.
+
+🎯 End-to-end ML system:
+**Data → Model → API → Dashboard → Cloud Deployment**
 
 ---
 
 ## 🎥 Live Demo (Quick Preview)
 
-![Demo](screenshots/demo.gif)
+![Demo](screenshots/demo1.gif)
 
 ---
 
 ## 📸 Dashboard Preview
 
-### 📊 Historical Data
+### 📊 Step 1: Upload Dataset & View Historical Trends
 
-![Dashboard](screenshots/dashboard1.png)
+![Dashboard](screenshots/stock_dash1.png)
 
-### 📉 Forecast Visualization
+### 📉 Step 2: Generate Forecast
 
-![Forecast](screenshots/dashboard2.png)
+![Forecast](screenshots/stock_dash2.png)
+
+### 📈 Step 3: Forecast vs Historical Comparison
+
+![Comparison](screenshots/stock_dash3.png)
+
+### ⚡ Step 4: FastAPI Backend Interface
+
+![API](screenshots/stock_dash4.png)
+
+---
+
+## 🏆 Why This Project Stands Out
+
+✔ Real-time deployed ML system (not just notebook)
+
+✔ Multivariate forecasting (beyond basic models)
+
+✔ Cloud-hosted application with public access
+
+✔ API + UI integration
+
+✔ Production-style architecture
 
 ---
 
 ## 🔥 Project Highlights
 
 ✔ Multivariate Time Series Forecasting using VAR
+
 ✔ Incorporates macroeconomic indicators (S&P 500, sentiment)
+
 ✔ Data preprocessing using differencing for stationarity
+
 ✔ Real-time prediction via FastAPI
+
 ✔ Interactive dashboard using Streamlit
+
 ✔ 30-day future forecasting capability
+
 ✔ End-to-end ML pipeline (data → model → deployment)
+
 ✔ Cloud deployment on GCP VM with static IP
-✔ Production-style ML system design
 
 ---
 
@@ -42,29 +83,32 @@
 
 Stock prices are influenced by multiple external factors and are highly volatile.
 
-👉 Traditional univariate models fail to capture interdependencies between variables.
+👉 Traditional models fail to capture relationships between multiple market indicators.
 
-👉 This project uses a **multivariate approach (VAR)** to model relationships between stock price, market index, and sentiment.
+👉 This project uses a **multivariate VAR model** to capture dependencies between stock price, market index, and sentiment.
 
-💼 **Impact:** Enables more realistic short-term forecasting and market trend analysis.
+💼 **Impact:** Enables realistic short-term forecasting and data-driven investment insights.
+
+📈 Enables better short-term decision making for trading and market trend analysis.
 
 ---
 
 ## 📊 Dataset
 
-* Source: Synthetic + financial indicators dataset
+* Source: Synthetic financial dataset
 * Size: ~100,000 rows
-* Features:
 
-  * stock_price
-  * sp500_index
-  * market_sentiment
+**Features:**
+
+* stock_price
+* sp500_index
+* market_sentiment
 
 ### 🔧 Preprocessing
 
 * Removed missing values
-* Applied **first-order differencing** to ensure stationarity
-* Selected relevant features for VAR modeling
+* Applied **first-order differencing** for stationarity
+* Selected relevant multivariate features
 
 ---
 
@@ -88,108 +132,103 @@ Forecast Output
 
 ## 🏗️ Architecture Details
 
-* FastAPI handles real-time inference requests
-* Streamlit provides interactive frontend visualization
-* VAR model captures multivariate temporal dependencies
-* Differencing ensures stable time series modeling
-* Forecast results are reconstructed to original scale
+* FastAPI handles real-time prediction requests
+* Streamlit provides interactive visualization
+* VAR captures multivariate temporal dependencies
+* Differencing ensures stable time-series modeling
+* Predictions reconstructed to original scale
+
+---
+
+## 📈 Model Performance
+
+The model was evaluated on a hold-out test set using standard regression metrics.
+
+### 📊 Evaluation Metrics
+
+| Metric   | Value     | Interpretation           |
+| -------- | --------- | ------------------------ |
+| **MAE**  | 4.39      | Average prediction error |
+| **RMSE** | 5.54      | Penalizes larger errors  |
+| **MSE**  | 30.72     | Error variance           |
+| **MAPE** | **0.91%** | Very high accuracy (<1%) |
+
+---
+
+📌 **Key Highlight:** Achieved **<1% MAPE → extremely high forecasting accuracy**
+
+---
+
+### 🧠 Performance Insights
+
+* Achieved **<1% MAPE**, indicating highly accurate short-term forecasts
+
+* Low RMSE (~5.5) shows predictions remain close to actual trends
+
+* Stable results due to:
+
+  * Multivariate modeling
+  * Proper preprocessing
+  * Feature selection
+
+---
+
+### 📌 Key Takeaway
+
+👉 Model is **production-ready for short-term forecasting**
+
+👉 Provides **stable, realistic predictions without extreme volatility**
 
 ---
 
 ## 🌐 Live Cloud Deployment
 
-🚀 This project is deployed on Google Cloud Platform (GCP)
+🚀 Deployed on Google Cloud Platform (GCP)
 
 ### 📊 Streamlit Dashboard
+
 👉 http://34.131.252.227:8501
 
-### ⚡ FastAPI Backend (API Docs)
+### ⚡ FastAPI API Docs
+
 👉 http://34.131.252.227:8002/docs
 
----
-
-### 🧠 How it works
-- Upload stock dataset
-- Model processes time-series data using VAR
-- Predicts next 30 days stock prices
-- Visualizes forecast vs historical data
-
----
-
-⚠️ Note:
-- VM may be stopped to save cloud cost
-- If link doesn’t work, please check later or contact me
+⚠️ Note: Demo may be unavailable if VM is stopped to optimize cost.
 
 ---
 
 ## 🔌 API Example
 
 ```bash
-curl -X POST "http://YOUR_VM_IP:8002/predict" \
+curl -X POST "http://34.131.252.227:8002/predict" \
 -H "Content-Type: application/json" \
 -d '{"input": [[500,4500,0.1],[501,4505,0.2],[502,4510,0.1],[503,4515,0.2],[504,4520,0.3]]}'
 ```
-
-👉 Returns 30-day stock price forecast.
-
----
-
-## 📈 Model Performance
-
-The model was evaluated on a hold-out test set using standard regression metrics for time series forecasting.
-
-### 📊 Evaluation Metrics
-
-| Metric | Value | Interpretation |
-|-------|------|----------------|
-| **MAE (Mean Absolute Error)** | 4.39 | Average absolute prediction error |
-| **RMSE (Root Mean Squared Error)** | 5.54 | Penalizes larger errors more heavily |
-| **MSE (Mean Squared Error)** | 30.72 | Variance of prediction errors |
-| **MAPE (Mean Absolute Percentage Error)** | **0.91%** | Very high accuracy (< 1%) |
-
----
-
-### 🧠 Performance Insights
-
-- The model achieves **<1% MAPE**, indicating highly accurate short-term forecasts  
-- Low RMSE (~5.5) shows predictions remain close to actual price movements  
-- Stable performance due to:
-  - Multivariate modeling (VAR)
-  - Stationarity via differencing
-  - Proper feature selection
-
----
-
-### 📌 Key Takeaway
-
-👉 The model is **well-suited for short-term financial forecasting**  
-👉 Provides **stable and realistic predictions**, avoiding extreme volatility  
-👉 Production-ready for real-time inference use cases
 
 ---
 
 ## 🧠 Model Selection Rationale
 
 * VAR captures relationships between multiple time-dependent variables
-* Suitable for financial and economic data
-* Lightweight and efficient compared to deep learning models
-* Ideal for real-time API deployment
+* Suitable for financial and economic datasets
+* Lightweight compared to deep learning models
+* Ideal for real-time deployment
 
 ---
 
 ## ⚖️ Design Trade-offs
 
 * VAR is fast and interpretable but assumes linear relationships
-* Deep learning models (LSTM/Transformers) may improve accuracy but increase complexity
-* Chosen approach balances **performance + speed + deployment simplicity**
+* Deep learning models may improve accuracy but increase complexity
+* Chosen approach balances **speed, performance, and deployability**
 
 ---
 
 ## ⚠️ Limitations
 
-* Assumes linear dependencies between variables
-* Sensitive to non-stationary input data
-* Forecast quality depends on input feature quality
+* Assumes linear relationships
+* Sensitive to non-stationary data
+* Performance depends on input feature quality
 * Free-tier cloud deployment may introduce latency
 
 ---
@@ -209,12 +248,10 @@ The model was evaluated on a hold-out test set using standard regression metrics
 ```bash
 source env/bin/activate
 
-uvicorn app_stock.app:app --host 0.0.0.0 --port 8002
+uvicorn apps_stock:app --host 0.0.0.0 --port 8002
 
-streamlit run app_stock/ui.py --server.port 8501 --server.address 0.0.0.0
+streamlit run apps_stock_ui.py --server.port 8501 --server.address 0.0.0.0
 ```
-
-⚠️ If the app is not accessible, the VM instance may be stopped to save cost.
 
 ---
 
@@ -254,11 +291,11 @@ apple-stock-forecasting/
 
 ## 💡 Key Learnings
 
-* Built a real-world multivariate time series forecasting system
-* Understood importance of preprocessing consistency (train vs inference)
-* Integrated FastAPI with Streamlit for production pipeline
+* Built an end-to-end time series forecasting system
+* Learned importance of preprocessing consistency
+* Integrated API + UI for real-time inference
 * Deployed ML system on cloud infrastructure
-* Debugged real-world deployment and scaling issues
+* Solved real-world deployment issues
 
 ---
 
@@ -275,8 +312,7 @@ apple-stock-forecasting/
 
 * Integrate LSTM / deep learning models
 * Add real-time stock data (Yahoo Finance API)
-* Include confidence intervals in forecasts
-* Improve UI/UX for better visualization
+* Include confidence intervals
 
 ---
 
@@ -292,3 +328,4 @@ apple-stock-forecasting/
 ## ⭐ Support
 
 If you found this project useful, give it a ⭐ on GitHub!
+
