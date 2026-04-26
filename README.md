@@ -112,6 +112,28 @@ Stock prices are influenced by multiple external factors and are highly volatile
 
 ---
 
+### 📂 Dataset Availability 
+
+The cleaned dataset used for modeling is available in:
+
+👉 `data/df_finals.csv`
+
+#### 📌 Features Used
+
+* stock_price → Apple stock price
+* sp500_index → Market index
+* market_sentiment → Sentiment indicator
+
+#### 🔧 Additional Processing
+
+* Log transformation applied
+* Outliers handled
+* Stationarity ensured using differencing
+
+📈 This dataset captures both **market behavior and sentiment**, enabling accurate multivariate forecasting.
+
+---
+
 ## 🏗️ System Architecture
 
 ```
@@ -178,6 +200,64 @@ The model was evaluated on a hold-out test set using standard regression metrics
 👉 Model is **production-ready for short-term forecasting**
 
 👉 Provides **stable, realistic predictions without extreme volatility**
+
+---
+
+## 📈 Model Comparison 
+
+Multiple models were evaluated to determine the best forecasting approach.
+
+### 📊 Comparison Table
+
+| Model   | RMSE | MAE  | MAPE        |
+| ------- | ---- | ---- | ----------- |
+| SARIMAX | 6.46 | 4.77 | 0.00997     |
+| VAR     | 5.54 | 4.39 | 0.00907     |
+| LSTM    | 5.44 | 4.27 | **0.00886** |
+
+---
+
+### 🧠 Insights
+
+#### 🔴 SARIMAX
+
+* Limited ability to capture multivariate dependencies
+* Higher prediction error
+
+---
+
+#### 🟡 VAR
+
+* Captures relationships between stock price, market index, and sentiment
+* Stable and interpretable
+* Ideal for financial time series
+
+---
+
+#### 🟢 LSTM
+
+* Best accuracy
+* Captures nonlinear patterns
+
+⚠️ However:
+
+* Higher complexity
+* Slower inference
+* Harder to deploy
+
+---
+
+## 🏆 Final Model Selection: VAR
+
+Although LSTM achieved slightly better accuracy, **VAR was selected** due to:
+
+✔ Strong multivariate relationships in data
+✔ Better interpretability
+✔ Faster inference (important for APIs)
+✔ Lower deployment complexity
+✔ More stable forecasting behavior
+
+📌 The project prioritizes **production efficiency and scalability over marginal accuracy gains**
 
 ---
 
@@ -280,6 +360,9 @@ apple-stock-forecasting/
 │   └── last_values.pkl
 │
 ├── data/
+│   ├── df_finals.csv   ✅
+│   └── sample_data.csv
+│
 ├── screenshots/
 │
 ├── requirements.txt
