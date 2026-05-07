@@ -1,21 +1,23 @@
-# 📈 Apple Stock Forecasting System (VAR | FastAPI | Streamlit | GCP Deployment)
+# 📈 Apple Stock Forecasting System (VAR | FastAPI | Streamlit | Docker | GCP Deployment)
 
 🚀 Production-ready ML system with real-time forecasting and <1% error deployed on cloud.
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![Docker](https://img.shields.io/badge/Docker-Containerization-blue)
 ![GCP](https://img.shields.io/badge/Cloud-GCP-orange)
 
 ---
 
 🚀 **Live App:** http://34.131.252.227:8501
+
 ⚡ **API Docs:** http://34.131.252.227:8002/docs
 
 🔥 Achieved **<1% forecasting error (MAPE)** using multivariate time series (VAR) deployed on cloud.
 
 🎯 End-to-end ML system:
-**Data → Model → API → Dashboard → Cloud Deployment**
+**Data → Model → API → Dashboard → Docker → Cloud Deployment**
 
 ---
 
@@ -57,6 +59,10 @@
 
 ✔ Production-style architecture
 
+✔ Dockerized deployment workflow
+
+✔ Containerized ML inference pipeline
+
 ---
 
 ## 🔥 Project Highlights
@@ -74,6 +80,8 @@
 ✔ 30-day future forecasting capability
 
 ✔ End-to-end ML pipeline (data → model → deployment)
+
+✔ Dockerized API deployment
 
 ✔ Cloud deployment on GCP VM with static IP
 
@@ -98,7 +106,7 @@ Stock prices are influenced by multiple external factors and are highly volatile
 * Source: Synthetic financial dataset
 * Size: ~100,000 rows
 
-**Features:**
+### Features:
 
 * stock_price
 * sp500_index
@@ -112,7 +120,7 @@ Stock prices are influenced by multiple external factors and are highly volatile
 
 ---
 
-### 📂 Dataset Availability 
+### 📂 Dataset Availability
 
 The cleaned dataset used for modeling is available in:
 
@@ -136,7 +144,7 @@ The cleaned dataset used for modeling is available in:
 
 ## 🏗️ System Architecture
 
-```
+```text
 User
  ↓
 Streamlit Dashboard
@@ -152,6 +160,20 @@ Forecast Output
 
 ---
 
+## 🏗️ Dockerized Architecture
+
+```text
+Docker Container
+│
+├── FastAPI Backend
+├── Time Series Forecasting Pipeline
+├── Trained VAR Model
+├── Forecast Engine
+└── REST API Service
+```
+
+---
+
 ## 🏗️ Architecture Details
 
 * FastAPI handles real-time prediction requests
@@ -159,6 +181,7 @@ Forecast Output
 * VAR captures multivariate temporal dependencies
 * Differencing ensures stable time-series modeling
 * Predictions reconstructed to original scale
+* Docker ensures consistent deployment environment
 
 ---
 
@@ -203,7 +226,7 @@ The model was evaluated on a hold-out test set using standard regression metrics
 
 ---
 
-## 📈 Model Comparison 
+## 📈 Model Comparison
 
 Multiple models were evaluated to determine the best forecasting approach.
 
@@ -252,9 +275,13 @@ Multiple models were evaluated to determine the best forecasting approach.
 Although LSTM achieved slightly better accuracy, **VAR was selected** due to:
 
 ✔ Strong multivariate relationships in data
+
 ✔ Better interpretability
+
 ✔ Faster inference (important for APIs)
+
 ✔ Lower deployment complexity
+
 ✔ More stable forecasting behavior
 
 📌 The project prioritizes **production efficiency and scalability over marginal accuracy gains**
@@ -274,6 +301,124 @@ Although LSTM achieved slightly better accuracy, **VAR was selected** due to:
 👉 http://34.131.252.227:8002/docs
 
 ⚠️ Note: Demo may be unavailable if VM is stopped to optimize cost.
+
+---
+
+## 🐳 Dockerized Deployment
+
+This project has been fully containerized using Docker for reproducible and production-ready deployment.
+
+---
+
+## 🚀 Why Docker?
+
+✔ Ensures consistent environment across systems
+
+✔ Eliminates dependency conflicts
+
+✔ Simplifies deployment workflow
+
+✔ Supports scalable cloud-native deployment
+
+✔ Enables isolated execution environment
+
+✔ Improves portability across machines and servers
+
+---
+
+## 📦 Dockerfile Highlights
+
+✔ Lightweight Python 3.11 slim image
+
+✔ Optimized build context using `.dockerignore`
+
+✔ Separate model and app copy strategy
+
+✔ Reduced unnecessary file transfer
+
+✔ Production-ready FastAPI startup command
+
+✔ Optimized containerized deployment workflow
+
+---
+
+## 📂 Docker Files Added
+
+```text
+Dockerfile
+.dockerignore
+```
+
+---
+
+## ⚙️ Build Docker Image
+
+```bash
+docker build -t stock-api .
+```
+
+---
+
+## ▶️ Run Docker Container
+
+```bash
+docker run -p 8002:8002 stock-api
+```
+
+---
+
+## 🌐 Access Dockerized API
+
+### FastAPI Swagger Docs
+
+```text
+http://localhost:8002/docs
+```
+
+---
+
+## 🧠 Docker Optimization Techniques Used
+
+✔ `.dockerignore` to exclude unnecessary files
+
+✔ Avoided large notebook/data transfer
+
+✔ Selective COPY commands instead of `COPY . .`
+
+✔ Lightweight base image (`python:3.11-slim`)
+
+✔ Cached dependency installation layers
+
+✔ Reduced Docker build context size
+
+---
+
+## 📊 Docker Benefits for ML Systems
+
+* Faster deployment
+* Reproducible environments
+* Easier scaling
+* Simplified CI/CD integration
+* Better portability across cloud platforms
+* Production-grade deployment workflow
+
+---
+
+## 🔥 Production Engineering Concepts Demonstrated
+
+✔ Containerization
+
+✔ REST API Deployment
+
+✔ Dependency Isolation
+
+✔ Build Context Optimization
+
+✔ FastAPI Production Serving
+
+✔ Cloud-Ready Architecture
+
+✔ Dockerized ML Deployment
 
 ---
 
@@ -320,6 +465,7 @@ curl -X POST "http://34.131.252.227:8002/predict" \
 * Backend: FastAPI (Uvicorn)
 * Frontend: Streamlit
 * Networking: Static External IP
+* Containerization: Docker
 
 ---
 
@@ -335,20 +481,36 @@ streamlit run apps_stock_ui.py --server.port 8501 --server.address 0.0.0.0
 
 ---
 
+## 🐳 Run Using Docker
+
+```bash
+git clone https://github.com/Kiran-id10/apple-stock-forecasting.git
+
+cd apple-stock-forecasting
+
+docker build -t stock-api .
+
+docker run -p 8002:8002 stock-api
+```
+
+---
+
 ## 🧰 Tech Stack
 
 * Python
-* Pandas, NumPy
+* Pandas
+* NumPy
 * Statsmodels (VAR)
 * FastAPI
 * Streamlit
+* Docker
 * Matplotlib
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 apple-stock-forecasting/
 │
 ├── app_stock/
@@ -360,14 +522,42 @@ apple-stock-forecasting/
 │   └── last_values.pkl
 │
 ├── data/
-│   ├── df_finals.csv   ✅
+│   ├── df_finals.csv
 │   └── sample_data.csv
 │
 ├── screenshots/
 │
+├── Dockerfile
+├── .dockerignore
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+```
+
+---
+
+## ⚙️ Local Setup
+
+```bash
+git clone https://github.com/Kiran-id10/apple-stock-forecasting.git
+
+cd apple-stock-forecasting
+
+python3 -m venv env
+
+source env/bin/activate
+
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Run Locally
+
+```bash
+uvicorn app_stock.app:app --reload --port 8002
+
+streamlit run app_stock/ui.py
 ```
 
 ---
@@ -379,6 +569,9 @@ apple-stock-forecasting/
 * Integrated API + UI for real-time inference
 * Deployed ML system on cloud infrastructure
 * Solved real-world deployment issues
+* Learned Docker containerization
+* Optimized Docker build context
+* Implemented production deployment workflow
 
 ---
 
@@ -396,6 +589,9 @@ apple-stock-forecasting/
 * Integrate LSTM / deep learning models
 * Add real-time stock data (Yahoo Finance API)
 * Include confidence intervals
+* Add Docker Compose for multi-container deployment
+* Kubernetes deployment
+* CI/CD integration
 
 ---
 
@@ -404,6 +600,7 @@ apple-stock-forecasting/
 **Kiran Kumar S R**
 
 🎓 Data Science & AI Engineer
+
 💼 Actively seeking Data Science / ML opportunities
 
 ---
@@ -411,4 +608,3 @@ apple-stock-forecasting/
 ## ⭐ Support
 
 If you found this project useful, give it a ⭐ on GitHub!
-
