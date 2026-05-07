@@ -1,0 +1,14 @@
+__pycache__
+*.ipynb
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.gif
+env
+venv
+.git
+.gitignore
+README.md
+screenshots
+data

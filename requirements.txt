@@ -4,7 +4,6 @@ streamlit
 pandas
 numpy
 matplotlib
-joblib
+scikit-learn
 statsmodels
-deep learning 
-time series forecasting
+joblib
