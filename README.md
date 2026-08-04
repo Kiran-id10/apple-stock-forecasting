@@ -585,7 +585,6 @@ streamlit run app_stock/ui.py
 
 ## 🔮 Future Improvements
 
-* Integrate LSTM / deep learning models
 * Add real-time stock data (Yahoo Finance API)
 * Include confidence intervals
 * Add Docker Compose for multi-container deployment
