@@ -10,18 +10,33 @@
 
 ---
 
-🚀 **Live App:** http://34.131.252.227:8501
+🎬 **Deployment Demo Available Below**
 
-⚡ **API Docs:** http://34.131.252.227:8002/docs
+⚠️ **Note:** The original cloud deployment was hosted on Google Cloud Platform (GCP). The VM instance may currently be offline to optimize hosting costs.
+
+🎥 The demo GIF below was recorded from the deployed cloud application and showcases the complete end-to-end workflow, including:
+
+✔ Historical trend visualization
+
+✔ Real-time forecasting
+
+✔ Dashboard interaction
+
+✔ FastAPI integration
+
+✔ Production deployment workflow
 
 🔥 Achieved **<1% forecasting error (MAPE)** using multivariate time series (VAR) deployed on cloud.
 
 🎯 End-to-end ML system:
+
 **Data → Model → API → Dashboard → Docker → Cloud Deployment**
 
 ---
 
 ## 🎥 Live Demo (Quick Preview)
+
+> The following demo was recorded from the deployed cloud application and demonstrates the complete workflow.
 
 ![Demo](screenshots/demo1.gif)
 
@@ -53,7 +68,7 @@
 
 ✔ Multivariate forecasting (beyond basic models)
 
-✔ Cloud-hosted application with public access
+✔ Cloud-hosted application architecture
 
 ✔ API + UI integration
 
@@ -191,11 +206,11 @@ The model was evaluated on a hold-out test set using standard regression metrics
 
 ### 📊 Evaluation Metrics
 
-| Metric   | Value     | Interpretation           |
-| -------- | --------- | ------------------------ |
-| **MAE**  | 4.39      | Average prediction error |
-| **RMSE** | 5.54      | Penalizes larger errors  |
-| **MSE**  | 30.72     | Error variance           |
+| Metric | Value | Interpretation |
+| ------- | ------ | -------------- |
+| **MAE** | 4.39 | Average prediction error |
+| **RMSE** | 5.54 | Penalizes larger errors |
+| **MSE** | 30.72 | Error variance |
 | **MAPE** | **0.91%** | Very high accuracy (<1%) |
 
 ---
@@ -232,11 +247,11 @@ Multiple models were evaluated to determine the best forecasting approach.
 
 ### 📊 Comparison Table
 
-| Model   | RMSE | MAE  | MAPE        |
+| Model | RMSE | MAE | MAPE |
 | ------- | ---- | ---- | ----------- |
-| SARIMAX | 6.46 | 4.77 | 0.00997     |
-| VAR     | 5.54 | 4.39 | 0.00907     |
-| LSTM    | 5.44 | 4.27 | **0.00886** |
+| SARIMAX | 6.46 | 4.77 | 0.00997 |
+| VAR | 5.54 | 4.39 | 0.00907 |
+| LSTM | 5.44 | 4.27 | **0.00886** |
 
 ---
 
@@ -288,19 +303,13 @@ Although LSTM achieved slightly better accuracy, **VAR was selected** due to:
 
 ---
 
-## 🌐 Live Cloud Deployment
+## 🌐 Cloud Deployment
 
-🚀 Deployed on Google Cloud Platform (GCP)
+🚀 Originally deployed on Google Cloud Platform (GCP)
 
-### 📊 Streamlit Dashboard
+⚠️ **Deployment Status:** The cloud instance may currently be offline to optimize hosting costs.
 
-👉 http://34.131.252.227:8501
-
-### ⚡ FastAPI API Docs
-
-👉 http://34.131.252.227:8002/docs
-
-⚠️ Note: Demo may be unavailable if VM is stopped to optimize cost.
+🎬 **Deployment Walkthrough:** Please refer to the demo GIF above, which was recorded from the deployed application and demonstrates the complete end-to-end workflow.
 
 ---
 
@@ -419,16 +428,6 @@ http://localhost:8002/docs
 ✔ Cloud-Ready Architecture
 
 ✔ Dockerized ML Deployment
-
----
-
-## 🔌 API Example
-
-```bash
-curl -X POST "http://34.131.252.227:8002/predict" \
--H "Content-Type: application/json" \
--d '{"input": [[500,4500,0.1],[501,4505,0.2],[502,4510,0.1],[503,4515,0.2],[504,4520,0.3]]}'
-```
 
 ---
 
